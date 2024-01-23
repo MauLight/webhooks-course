@@ -18,8 +18,8 @@ app.get("/", (req, res) => res.send(`
 `));
 
 app.post("/github", (req, res) => {
-  const content = ":wave: Hi Mau!";
-  const avatarUrl = "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif";
+  const content = `:star_struck: Something happened in the repository ${req.body.repository.name}, ${req.body.sender.login}!`;
+  const avatarUrl = req.body.sender.avatar_url;
   axios
     .post(process.env.DISCORD_WEBHOOK_URL, {
       content: content,
